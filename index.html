@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>医美好内容手册 — 拆解 + 素材建议</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #f8f9fa; color: #333; line-height: 1.7; }
+  .header { background: linear-gradient(135deg, #ff6b6b 0%, #5f7cfa 100%); color: #fff; text-align: center; padding: 48px 24px 36px; }
+  .header h1 { font-size: 2em; margin-bottom: 8px; }
+  .header p { opacity: .85; font-size: 1.05em; }
+  .nav { background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; display: flex; justify-content: center; gap: 0; }
+  .nav a { display: block; padding: 14px 28px; font-weight: 600; font-size: .95em; color: #666; text-decoration: none; border-bottom: 3px solid transparent; transition: .2s; }
+  .nav a:hover, .nav a.active { color: #ff6b6b; border-bottom-color: #ff6b6b; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px 60px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .card { background: #fff; border-radius: 14px; padding: 28px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .card h2 { font-size: 1.35em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #f0f0f0; }
+  .card h3 { font-size: 1.1em; margin: 18px 0 10px; color: #444; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: .82em; font-weight: 600; margin: 2px 4px 2px 0; }
+  .badge-red { background: #fff0f0; color: #e04040; }
+  .badge-blue { background: #eef3ff; color: #4a6cf7; }
+  .badge-green { background: #f0fff4; color: #2ecc71; }
+  .badge-purple { background: #f5f0ff; color: #8b5cf6; }
+  .badge-orange { background: #fff8f0; color: #f59e0b; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: .88em; }
+  th { background: #f8f9fa; padding: 10px 8px; text-align: left; font-weight: 600; border-bottom: 2px solid #e0e0e0; position: sticky; top: 52px; }
+  td { padding: 8px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+  tr:hover { background: #fafafa; }
+  .ctr-high { color: #e04040; font-weight: 700; }
+  .ctr-mid { color: #f59e0b; font-weight: 600; }
+  .template-card { border-left: 4px solid #ff6b6b; margin: 20px 0; padding: 18px 22px; background: #fffdf8; border-radius: 0 12px 12px 0; }
+  .template-card .title { font-weight: 700; font-size: 1.05em; margin-bottom: 8px; }
+  .template-card .author { color: #888; font-size: .9em; margin-bottom: 10px; }
+  .template-card .scores { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+  .template-card .label { font-weight: 700; color: #555; }
+  .template-card code { background: #f0f0f0; padding: 2px 8px; border-radius: 4px; font-size: .92em; }
+  .ad-card { border-left: 4px solid #5f7cfa; margin: 20px 0; padding: 18px 22px; background: #f8faff; border-radius: 0 12px 12px 0; }
+  .ad-card .section-label { font-weight: 700; color: #4a6cf7; margin-top: 12px; font-size: .95em; }
+  .ad-card p { margin: 6px 0; }
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .filter-btn { padding: 6px 14px; border: 1px solid #ddd; border-radius: 20px; background: #fff; cursor: pointer; font-size: .85em; transition: .2s; }
+  .filter-btn:hover, .filter-btn.active { background: #ff6b6b; color: #fff; border-color: #ff6b6b; }
+  .scroll-table { max-height: 600px; overflow-y: auto; border-radius: 10px; border: 1px solid #e8e8e8; }
+  .footer { text-align: center; padding: 30px; color: #999; font-size: .85em; }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 20px; }
+  .stat-box { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border-radius: 12px; padding: 18px; text-align: center; }
+  .stat-box .num { font-size: 2em; font-weight: 800; }
+  .stat-box .lbl { font-size: .85em; opacity: .85; }
+  .stat-box.red { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+  .stat-box.green { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+  .stat-box.blue { background: linear-gradient(135deg, #5f7cfa, #4a6cf7); }
+  .stat-box.orange { background: linear-gradient(135deg, #f59e0b, #f39c12); }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+  .tag { background: #f0f0f0; padding: 3px 10px; border-radius: 14px; font-size: .82em; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🌸 医美好内容手册</h1>
+  <p>双周数据复盘 · 内容拆解 + 搜索广告素材建议</p>
+  <p style="font-size:.85em;margin-top:6px;opacity:.7">2026/05/04 ~ 05/17 ｜ 共 213 条笔记 · 18 张精拆卡</p>
+</div>
+
+<div class="nav">
+  <a href="#" class="active" onclick="switchTab('content',this)">📋 医美好内容拆解</a>
+  <a href="#" onclick="switchTab('ad',this)">💡 搜索广告素材建议</a>
+</div>
+
+<div class="container">
+
+<!-- ========== Section 1: 内容拆解 ========== -->
+<div id="content" class="section active">
+
+  <div class="stat-grid">
+    <div class="stat-box red"><div class="num">213</div><div class="lbl">笔记总数</div></div>
+    <div class="stat-box blue"><div class="num">18</div><div class="lbl">精拆模板</div></div>
+    <div class="stat-box green"><div class="num">32.49%</div><div class="lbl">最高种草CTR</div></div>
+    <div class="stat-box orange"><div class="num">4</div><div class="lbl">术式类型</div></div>
+  </div>
+
+  <!-- TOP 笔记表格 -->
+  <div class="card">
+    <h2>📊 TOP 笔记榜单</h2>
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" onclick="filterTable('all',this)">全部</button>
+      <button class="filter-btn" onclick="filterTable('💡光电',this)">💡光电</button>
+      <button class="filter-btn" onclick="filterTable('💉注射',this)">💉注射</button>
+      <button class="filter-btn" onclick="filterTable('🌸皮肤',this)">🌸皮肤</button>
+      <button class="filter-btn" onclick="filterTable('🔪整外',this)">🔪整外</button>
+      <button class="filter-btn" onclick="filterTable('🌿其他',this)">🌿其他</button>
+    </div>
+    <div class="scroll-table">
+    <table id="topTable">
+      <thead>
+        <tr><th>#</th><th>术式</th><th>赛道</th><th>笔记来源</th><th>笔记标题</th><th>作者</th><th>种草CTR</th></tr>
+      </thead>
+      <tbody>
+<tr data-type="🌿其他"><td>1</td><td>其他</td><td>🔧 医美器械</td><td>🌼 蒲公英笔记</td><td>赚钱第一步：立好"贵女"人设</td><td>@mumusays · 弗缦FILLDERM-注射类</td><td class="ctr-mid">8.63%</td></tr>
+<tr data-type="💉注射"><td>2</td><td>💉注射</td><td>🔧 医美器械</td><td>📝 KOS笔记</td><td>塑妍萃打前必看！每一岁都值得被偏爱</td><td>@王肖琴助理 | 骨相美学 · 高德美-注射类</td><td class="ctr-mid">13.92%</td></tr>
+<tr data-type="💡光电"><td>3</td><td>💡光电</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>方圆脸+阔面脸本命变美思路✅️</td><td>@唐齐｜新疆华美 · 新疆华美-区域</td><td class="ctr-mid">9.58%</td></tr>
+<tr data-type="🌿其他"><td>4</td><td>🌿其他</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>之后的我，怎么样了？</td><td>@黄予婷Tivia助理｜材料科普版 · 今识医美-区域</td><td class="ctr-high">15.80%</td></tr>
+<tr data-type="🌸皮肤"><td>5</td><td>🌸皮肤</td><td>🔧 医美器械</td><td>🌼 蒲公英笔记</td><td>皮肤屏障脆弱！敏肌护肤找准修护思路！</td><td>@阿雷护肤版 · 四环医药-注射类</td><td class="ctr-mid">6.81%</td></tr>
+<tr data-type="💉注射"><td>6</td><td>💉注射</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>1.5ml/支的Radiesse，这样打一滴都不浪费！</td><td>@黄予婷Tivia助理｜材料科普版 · 今识医美-区域</td><td class="ctr-high">26.04%</td></tr>
+<tr data-type="💉注射"><td>7</td><td>💉注射</td><td> 医美机构</td><td>📝 KOS笔记</td><td>闺蜜们 这个鼻子值不值？</td><td>@上海郑志玉｜缩鼻翼 · 今识医美-区域</td><td class="ctr-high">17.92%</td></tr>
+<tr data-type="💡光电"><td>8</td><td>💡光电</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>北京微调丨微调大咖教你方圆脸变美思路‼️</td><td>@孟幻|力学抗衰助理 · 薇琳医美-SKA</td><td class="ctr-mid">5.61%</td></tr>
+<tr data-type="💉注射"><td>9</td><td>💉注射</td><td> 医美机构</td><td> KOS笔记</td><td>面中凹陷解决思路</td><td>@唐齐｜新疆华美 · 新疆华美-区域</td><td class="ctr-mid">9.41%</td></tr>
+<tr data-type="💉注射"><td>10</td><td>💉注射</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>不叨叨，2步改善朝天鼻，下拉鼻翼缘！</td><td>@杨晓松骨相美学|助理 · 纽菲思医美-区域</td><td class="ctr-mid">9.64%</td></tr>
+<tr data-type="🌿其他"><td>11</td><td>🌿其他</td><td>🏥 医美机构</td><td> KOS笔记</td><td>被自己美到啦～</td><td>@陈郇｜抗衰美学助理 · 专美医美-区域</td><td class="ctr-mid">12.76%</td></tr>
+<tr data-type="💡光电"><td>12</td><td>💡光电</td><td> 医美机构</td><td>📝 KOS笔记</td><td>一个让我们脸显瘦变得更有折叠度的小巧思</td><td>@张云卿助理丨轻盈骨相版 · 今识医美-区域</td><td class="ctr-mid">11.62%</td></tr>
+<tr data-type="💉注射"><td>13</td><td>💉注射</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>📍昆明|不增容只收紧！口角囊袋克星来了</td><td>@钱静 | 面部提升助理 · 美莱-SKA</td><td class="ctr-mid">12.23%</td></tr>
+<tr data-type="💉注射"><td>14</td><td>💉注射</td><td> 医美机构</td><td> KOS笔记</td><td>嘴凸就去打这！</td><td>@艾星星｜骨韧高阶抗衰 · 朗姿医美-SKA</td><td class="ctr-mid">6.57%</td></tr>
+<tr data-type="皮肤"><td>15</td><td>🌸皮肤</td><td> 医美器械</td><td>📝 KOS笔记</td><td>三分治疗，七分保养｜熟龄肌抗老家居保养</td><td>@爱玩童颜的Anna · 高德美-其他</td><td class="ctr-mid">11.35%</td></tr>
+<tr data-type="💡光电"><td>16</td><td>💡光电</td><td>🏥 医美机构</td><td> KOS笔记</td><td>30+面部提升有效思路……</td><td>@李善敬助理丨联合提升 · 专美医美-区域</td><td class="ctr-mid">9.12%</td></tr>
+<tr data-type="🌿其他"><td>17</td><td>🌿其他</td><td>🔧 医美器械</td><td>📝 KOS笔记</td><td>别乱填了！用这张动态网兜住你的下垂口周！</td><td>@Yestar肖玮原生美学日记 · 高德美-注射类</td><td class="ctr-mid">9.02%</td></tr>
+<tr data-type="注射"><td>18</td><td>💉注射</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>童颜长脂肪？️打错"脸更胖"…..</td><td>@台湾廖孟南｜专注再生材料助理 · 专美医美-区域</td><td class="ctr-high">26.75%</td></tr>
+<tr data-type="💡光电"><td>19</td><td>💡光电</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>骨相立体鼻，实现半永久立体侧颜</td><td>@赵江辉 | 骨相轻薄美学（助理） · 美莱-SKA</td><td class="ctr-mid">12.61%</td></tr>
+<tr data-type="💡光电"><td>20</td><td>💡光电</td><td> 医美机构</td><td> KOS笔记</td><td>面部抗衰新方案，实现自然妈生变美~</td><td>@高明英丨北京高级美学顾问 · 画美-SKA</td><td class="ctr-mid">10.03%</td></tr>
+<tr data-type="🌸皮肤"><td>21</td><td>皮肤</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>红血丝的橡皮擦🏻</td><td>@凯思米丨姜菁菁小助理 · 凯思米</td><td class="ctr-high">18.43%</td></tr>
+<tr data-type="注射"><td>22</td><td>💉注射</td><td>🛒 医美平台</td><td>📝 KOS笔记</td><td>上海幼态下巴模板</td><td>@袁吕荣助理｜下巴定制 · 一美-转诊平台</td><td class="ctr-mid">13.39%</td></tr>
+<tr data-type="💡光电"><td>23</td><td>💡光电</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>做了上万面诊，劝你别乱做面部提升</td><td>@上海王易彬｜面部提升REAL · 瑞欧医美-区域</td><td class="ctr-mid">10.02%</td></tr>
+<tr data-type="💡光电"><td>24</td><td>💡光电</td><td> 医美机构</td><td>📝 KOS笔记</td><td>为什么热玛吉价格有高有低？？</td><td>@吕桦 | 南京热玛吉(小助理) · 美莱-SKA</td><td class="ctr-mid">14.58%</td></tr>
+<tr data-type="🔪整外"><td>25</td><td>🔪整外</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>假体下巴 | 真的绝了</td><td>@龙兵助理 ｜ 3D Peek自主设计 · 玺悦-区域</td><td>3.79%</td></tr>
+<tr data-type="🔪整外"><td>26</td><td>🔪整外</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>💰你愿意，为这样的双眼皮花几个w？</td><td>@宋秀旭无痕双眼皮｜助理 · 今识医美-区域</td><td class="ctr-mid">10.63%</td></tr>
+<tr data-type="💡光电"><td>27</td><td>光电</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>北京女娲教你【扁平脸菱形脸】逆袭思路‼️</td><td>@孟幻|力学抗衰助理 · 薇琳医美-SKA</td><td class="ctr-mid">11.67%</td></tr>
+<tr data-type="💡光电"><td>28</td><td>💡光电</td><td>🏥 医美机构</td><td> KOS笔记</td><td>塌鼻立体，宽鼻缩窄！高阶打法更自然妈生~</td><td>@彭鑫助理|T区骨相美学 · 今识医美-区域</td><td class="ctr-mid">12.20%</td></tr>
+<tr data-type="💡光电"><td>29</td><td>💡光电</td><td> 医美器械</td><td> KOS笔记</td><td>在济南，她的热玛吉还是太权威了!</td><td>@齐红艳｜美肤抗衰 · 索塔-光电类</td><td class="ctr-mid">5.22%</td></tr>
+<tr data-type="🌿其他"><td>30</td><td>🌿其他</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>线条感来啦！</td><td>@华颜美 孙好杰|脂肪美学 · 华颜美-区域</td><td class="ctr-mid">14.70%</td></tr>
+<tr data-type="💡光电"><td>34</td><td>💡光电</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>40+面部提升思路......</td><td>@李善敬助理丨联合提升 · 专美医美-区域</td><td class="ctr-high">31.35%</td></tr>
+<tr data-type="💉注射"><td>41</td><td>💉注射</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>全面解析30➕松垮垂，塑妍萃2步全脸紧致提升</td><td>@黄予婷Tivia助理｜材料科普版 · 今识医美-区域</td><td class="ctr-high">21.27%</td></tr>
+<tr data-type="💡光电"><td>59</td><td>💡光电</td><td>🏥 医美机构</td><td>📝 KOS笔记</td><td>热玛吉+大超炮=抗衰"王炸"这3类人别碰❗</td><td>@北京余永利｜热超联合抗衰 · 画美-SKA</td><td class="ctr-high">32.49%</td></tr>
+<tr data-type="💉注射"><td>61</td><td>💉注射</td><td>🛒 医美平台</td><td>📝 KOS笔记</td><td>幼态peek下巴模板～</td><td>@袁吕荣助理| 3D下巴美学 · 一美-转诊平台</td><td class="ctr-high">23.30%</td></tr>
+<tr data-type="💉注射"><td>183</td><td>💉注射</td><td> 医美平台</td><td> KOS笔记</td><td>带大家沉浸式回顾下我们奇迹胶原新品发布会</td><td>@新氧金星 · 新氧-交易平台</td><td class="ctr-high">30.13%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="text-align:center;color:#999;font-size:.82em;margin-top:12px">以上为精选展示，完整数据共 213 条笔记</p>
+  </div>
+
+  <!-- 精拆模板 -->
+  <div class="card">
+    <h2>✂️ 精拆 · 抄作业模板</h2>
+    <p style="color:#666;margin-bottom:16px">以下 18 个模板从 TOP 笔记中提取，包含三感六度分析、封面公式、开头公式和视频节奏。</p>
+
+    <div class="template-card">
+      <div class="title">光电 · 方圆脸+阔面脸本命变美思路✅️</div>
+      <div class="author">@唐齐｜新疆华美 · 新疆华美-区域 | 种草CTR 9.58%</div>
+      <div class="scores">
+        <span class="badge badge-red"> 好奇感 82</span>
+        <span class="badge badge-green">👍 认同感 52</span>
+        <span class="badge badge-blue">💖 心动感 54</span>
+        <span class="badge badge-purple">强项: 兴趣激发 90</span>
+      </div>
+      <p><span class="label">✏️ 模板化标题：</span><code>{年龄段}的{部位},光电真的绝了!</code></p>
+      <p><span class="label">🎨 封面公式：</span>仪器实物特写 + 大字仪器名 / 博主真人精修单人照 + 反差动作（捏苹果肌/摸下颌线）</p>
+      <p><span class="label"> 开头公式：</span>① 仪器实物特写 + 大字仪器名 ② 反差对比动作 ③ BA自爆(说明自己的痛点)</p>
+      <p><span class="label">🎞️ 节奏：</span>0-3s 钩子 → 3-15s 痛点放大 → 15-30s 仪器原理 → 30-60s 真人案例 → 60s+ 评论区引导</p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">💉注射 · 1.5ml/支的Radiesse，这样打一滴都不浪费！</div>
+      <div class="author">@黄予婷Tivia助理｜材料科普版 · 今识医美-区域 | 种草CTR 26.04%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 82</span>
+        <span class="badge badge-green">👍 认同感 82</span>
+        <span class="badge badge-blue"> 心动感 72</span>
+        <span class="badge badge-purple">强项: 兴趣激发 90 · 情绪共鸣 85</span>
+      </div>
+      <p><span class="label">✏️ 模板化标题：</span><code>{部位}做注射{次数}次后,效果绝了!</code></p>
+      <p><span class="label"> 封面公式：</span>产品包装实拍 + 大字品牌名 / 项目原理示意图 / 博主真人单人照</p>
+      <p><span class="label">🎯 开头公式：</span>① 产品实物在脸前晃 ② 注射针实拍(注意合规) ③ 客户面诊原话</p>
+      <p><span class="label">🎞️ 节奏：</span>0-3s 产品/动作钩子 → 3-15s 项目区分 → 15-30s 适用人群 → 30-60s 注射/效果展示 → 60s+ 复打节奏</p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">皮肤 · 红血丝的橡皮擦🏻</div>
+      <div class="author">@凯思米丨姜菁菁小助理 · 凯思米 | 种草CTR 18.43%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 82</span>
+        <span class="badge badge-green"> 认同感 73</span>
+        <span class="badge badge-blue">💖 心动感 65</span>
+        <span class="badge badge-purple">强项: 兴趣激发 90 · 场景融入 80</span>
+      </div>
+      <p><span class="label">✏️ 模板化标题：</span><code>{部位}皮肤思路,{年龄段}必看</code></p>
+      <p><span class="label">🎨 封面公式：</span>皮肤局部特写(痘印/斑/红血丝)+ 红圈痛点 / 护肤场景实拍 / 仪器特写</p>
+      <p><span class="label">🎯 开头公式：</span>① 镜头怼脸特写痛点 ② 化妆品堆 + "用了 N 年没用" ③ 错误护理动作展示</p>
+      <p><span class="label">️ 节奏：</span>0-3s 症状特写 → 3-15s 错误护理 → 15-30s 成因解释 → 30-60s 治疗方案 → 60s+ 效果展示</p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">🔪整外 · 假体下巴 | 真的绝了</div>
+      <div class="author">@龙兵助理 ｜ 3D Peek自主设计 · 玺悦-区域 | 种草CTR 3.79%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 80</span>
+        <span class="badge badge-green">👍 认同感 82</span>
+        <span class="badge badge-blue">💖 心动感 82</span>
+        <span class="badge badge-purple">强项: 情绪共鸣 85 · 需求解决 85</span>
+      </div>
+      <p><span class="label">✏️ 模板化标题：</span><code>{部位}整外思路,{年龄段}必看</code></p>
+      <p><span class="label">🎨 封面公式：</span>博主真人精修单人照（带气质感）/ 3D 模拟图 / 项目效果原理图</p>
+      <p><span class="label"> 开头公式：</span>① 术前真人正侧脸 ② 3D 模拟动图 ③ "差 1mm 是这种效果"对比</p>
+      <p><span class="label">🎞️ 节奏：</span>0-3s 术前态钩子 → 3-15s 痛点说明 → 15-30s 术式选择 → 30-60s 术后恢复 → 60s+ 长期效果</p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">💡光电 · 鼻立体感不只看高度（企业号）</div>
+      <div class="author">@广州曙光美体塑形中心 · 科康集团-SKA | 种草CTR 12.82%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 82</span>
+        <span class="badge badge-purple">强项: 兴趣激发 90 · 受众精准 75</span>
+      </div>
+      <p><span class="label">📐 正文特点：</span>较长(224字,含科普),深度科普类,通常 60s+ 完整讲解一个项目</p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">💉注射 · 鼻尖表现点决定鼻子风格（企业号）</div>
+      <div class="author">@广州曙光美体塑形中心 · 科康集团-SKA | 种草CTR 8.18%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 80</span>
+        <span class="badge badge-purple">强项: 兴趣激发 90 · 受众精准 70</span>
+      </div>
+      <p><span class="label">🎯 开头：</span>「鼻尖才是鼻整形的灵魂鼻尖做好看了整个鼻子就好看了」</p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">🌸皮肤 · 兰州黄金微针|毛孔粗大痘印痘肌 拼团价‼️（企业号）</div>
+      <div class="author">@兰州维多丽亚整形美容医院 · 兰州维多丽亚-区域 | 种草CTR 13.40%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 82</span>
+        <span class="badge badge-green">👍 认同感 86</span>
+        <span class="badge badge-blue">💖 心动感 78</span>
+        <span class="badge badge-purple">强项: 情绪共鸣 93 · 兴趣激发 90</span>
+      </div>
+      <p><span class="label">🎯 开头：</span>「🎀毛孔痘印。它是真的敢打」</p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">光电 · 在济南，她的热玛吉还是太权威了!（KOS笔记）</div>
+      <div class="author">@齐红艳｜美肤抗衰 · 索塔-光电类 | 种草CTR 5.22%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 78</span>
+        <span class="badge badge-purple">强项: 兴趣激发 93 · 受众精准 63</span>
+      </div>
+      <p><span class="label">📐 正文特点：</span>较长(337字,含科普),深度科普类,60s+ 完整讲解</p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">💉注射 · 塑妍萃打前必看！每一岁都值得被偏爱（KOS笔记）</div>
+      <div class="author">@王肖琴助理 | 骨相美学 · 高德美-注射类 | 种草CTR 13.92%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 86</span>
+        <span class="badge badge-purple">强项: 兴趣激发 90 · 受众精准 83</span>
+      </div>
+      <p><span class="label">✏️ 模板化标题：</span><code>{年龄段}的{部位},注射真的绝了!</code></p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">🌸皮肤 · 三分治疗，七分保养｜熟龄肌抗老家居保养（KOS笔记）</div>
+      <div class="author">@爱玩童颜的Anna · 高德美-其他 | 种草CTR 11.35%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 86</span>
+        <span class="badge badge-purple">强项: 兴趣激发 90 · 受众精准 83</span>
+      </div>
+      <p><span class="label">️ 模板化标题：</span><code>{部位}皮肤思路,{年龄段}必看</code></p>
+      <p><span class="label">📐 正文特点：</span>极简(0字),主要靠画面 + 旁白讲解</p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">💉注射 · 活性胶原蛋白Biu进皮肤以后，会发生什么？（企业号）</div>
+      <div class="author">@弗缦美学 · 弗缦FILLDERM-注射类 | 种草CTR 3.39%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 70</span>
+        <span class="badge badge-purple">强项: 兴趣激发 82 · 受众精准 58</span>
+      </div>
+      <p><span class="label">✏️ 模板化标题：</span><code>{年龄段}的{部位},做注射靠谱吗?</code></p>
+      <p><span class="label">🎯 开头：</span>「😭垮脸衰老，根源是自身胶原跟不上流失速度 👉从松弛衰老→到光滑弹润，你究竟差在哪一步」</p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">🌸皮肤 · 皮肤屏障脆弱！敏肌护肤找准修护思路！（蒲公英笔记）</div>
+      <div class="author">@阿雷护肤版 · 四环医药-注射类 | 种草CTR 6.81%</div>
+      <div class="scores">
+        <span class="badge badge-red"> 好奇感 78</span>
+        <span class="badge badge-purple">强项: 兴趣激发 90 · 受众精准 67</span>
+      </div>
+      <p><span class="label">✏️ 模板化标题：</span><code>{年龄段}的{部位},皮肤真的绝了!</code></p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">💡光电 · 带你第一视角沉浸式体验腋下脱毛全过程✨（KOS笔记）</div>
+      <div class="author">@深圳一久翠绿宝石悬浮脱毛 · 胖鲸-转诊平台 | 种草CTR 11.28%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 86</span>
+        <span class="badge badge-purple">强项: 兴趣激发 97 · 受众精准 75</span>
+      </div>
+      <p><span class="label">✏️ 模板化标题：</span><code>{部位}光电思路,{年龄段}必看</code></p>
+      <p><span class="label">📐 正文特点：</span>极简(0字),主要靠画面 + 旁白讲解</p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">💉注射 · 上海幼态下巴模板（KOS笔记）</div>
+      <div class="author">@袁吕荣助理｜下巴定制 · 一美-转诊平台 | 种草CTR 13.39%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 90</span>
+        <span class="badge badge-green">👍 认同感 82</span>
+        <span class="badge badge-blue">💖 心动感 65</span>
+        <span class="badge badge-purple">强项: 兴趣激发 90 · 受众精准 89</span>
+      </div>
+      <p><span class="label">️ 模板化标题：</span><code>{部位}注射思路,{年龄段}必看</code></p>
+      <p><span class="label"> 正文特点：</span>极简(0字),主要靠画面 + 旁白讲解</p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">🔪整外 · 杏仁眼❕❕7mm清澈无辜少女感丨眼修复（KOS笔记）</div>
+      <div class="author">@小红薯6A0FD1CC · 如丽-转诊平台 | 种草CTR 19.85%</div>
+      <div class="scores">
+        <span class="badge badge-red"> 好奇感 82</span>
+        <span class="badge badge-green">👍 认同感 82</span>
+        <span class="badge badge-blue">💖 心动感 82</span>
+        <span class="badge badge-purple">强项: 兴趣激发 90 · 情绪共鸣 85</span>
+      </div>
+      <p><span class="label">✏️ 模板化标题：</span><code>{部位}整外思路,{年龄段}必看</code></p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">💉注射 · 不是，还有人在塑妍萃踩坑？打前必看系列‼️（企业号）</div>
+      <div class="author">@美呗医美指南 · 美呗-转诊平台-SKA | 种草CTR 3.66%</div>
+      <div class="scores">
+        <span class="badge badge-red"> 好奇感 83</span>
+        <span class="badge badge-green">👍 认同感 82</span>
+        <span class="badge badge-blue">💖 心动感 69</span>
+        <span class="badge badge-purple">强项: 兴趣激发 91 · 情绪共鸣 85</span>
+      </div>
+      <p><span class="label">✏️ 模板化标题：</span><code>{年龄段}的{部位},做注射靠谱吗?</code></p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">🔪整外 · 植发医院到底哪家靠谱？附本地医院白名单（企业号）</div>
+      <div class="author">@美呗全智甜 · 美呗-转诊平台-SKA | 种草CTR 25.45%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 86</span>
+        <span class="badge badge-purple">强项: 兴趣激发 97 · 受众精准 75</span>
+      </div>
+      <p><span class="label">✏️ 模板化标题：</span><code>{年龄段}的{部位},做整外靠谱吗?</code></p>
+    </div>
+
+    <div class="template-card">
+      <div class="title">🔪整外 · 鼻整形三个平衡点，避免失败（企业号）</div>
+      <div class="author">@广州曙光美体塑形中心 · 科康集团-SKA | 种草CTR 12.81%</div>
+      <div class="scores">
+        <span class="badge badge-red">🤔 好奇感 82</span>
+        <span class="badge badge-purple">强项: 兴趣激发 90 · 受众精准 75</span>
+      </div>
+      <p><span class="label">🎯 开头：</span>「负责任的鼻整形需兼顾三个平衡，才能效果持久：1️⃣ 支架与皮肤张力平衡...」</p>
+      <p><span class="label">📐 正文特点：</span>较长(216字,含科普),深度科普类,60s+ 完整讲解</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== Section 2: 搜索广告素材建议 ========== -->
+<div id="ad" class="section">
+  <div class="card">
+    <h2>💡 搜索广告素材建议</h2>
+    <p style="color:#666;margin-bottom:20px">针对医美搜索广告场景，提供素材方向与创意建议，提升搜索投放效率与转化。覆盖注射填充、祛斑、光电抗衰三大品类。</p>
+  </div>
+
+  <div class="card">
+    <h2>🎯 场景一：显年轻 / 减龄</h2>
+    <div class="ad-card">
+      <p><strong>📊 全量相关词：</strong>减龄秀禾造型、纹美瞳线显年轻还是显老、40岁减龄短发、钟汉良为什么显年轻、减龄妈生眉、喝咖啡加冰显年轻文案、中庭短显年轻、减龄锁骨发、中短发减龄卷发、减龄超短发、减龄层次感锁骨发、短发羊毛卷怎么扎好看又减龄、40岁减龄短发图片...</p>
+
+      <div class="section-label">🧠 用户心理</div>
+      <p>自尊心受挫型。被评价「显老」后从被动接受转向系统性抗衰，愿意投入更多时间和金钱，搜索抗老/显年轻/减龄等关键词，处于「我要彻底改变」的高意愿阶段。</p>
+
+      <div class="section-label">💬 卖点植入逻辑</div>
+      <p>共情「被叫阿姨」后的心理落差 → 引出「改善显老+提升抗衰」卖点，说明注射填充可以系统性地改善面部衰老信号 → KOC口吻：「被叫阿姨那天我真的破防了——但后来才明白，显老不是年龄的问题，是面部凹陷+轮廓垮了。填对了，年轻5岁不是梦」</p>
+
+      <div class="section-label">📝 标题和内容</div>
+      <p><strong>【标题】</strong>被说显老怎么办？面部抗衰全方案｜从显老到显年轻的逆袭攻略</p>
+      <p><strong>【首句】</strong>30岁被叫阿姨的那一刻，我决定认真抗老了——不是接受衰老，而是要把失去的年轻找回来。</p>
+
+      <div class="section-label">🖼️ 首图视觉建议</div>
+      <p><strong>【画面主体】</strong>「显老 vs 显年轻」对比拼图，同一角度两张照片，标注关键改善部位（法令纹/泪沟/太阳穴/下颌线），配年龄感变化说明</p>
+      <p><strong>【首图花字】</strong>显老不是年龄问题，是脸垮了</p>
+      <p><strong>【色调/氛围】</strong>温暖励志风格，前后对比真实自然，传递「逆袭」的希望感</p>
+
+      <div class="section-label">🏷️ 话题标签</div>
+      <div class="tag-list">
+        <span class="tag">#被说显老</span>
+        <span class="tag">#面部抗衰</span>
+        <span class="tag">#显年轻攻略</span>
+        <span class="tag">#抗老最有效</span>
+        <span class="tag">#减龄医美</span>
+        <span class="tag">#面部年轻化</span>
+        <span class="tag">#显老改善</span>
+        <span class="tag">#抗老项目</span>
+        <span class="tag">#回春攻略</span>
+        <span class="tag">#华南医美</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💉 场景二：注射填充类</h2>
+    <div class="ad-card">
+      <div class="section-label">🧠 用户心理</div>
+      <p>信息焦虑型。搜索「xx材料怎么样」「打xx安全吗」「xx和xx哪个更好」，处于决策前期，需要专业背书和真实案例来消除顾虑。</p>
+
+      <div class="section-label">💬 卖点植入逻辑</div>
+      <p>以「材料科普+真实效果」双轮驱动：先建立专业信任（材料成分、维持时间、适用人群），再用真实案例证明效果。KOC口吻：「面诊了3家才决定打这个，选对材料真的少受一半罪」</p>
+
+      <div class="section-label">📝 标题方向</div>
+      <p><strong>【科普型】</strong>塑妍萃/童颜/濡白天使...打前必看系列｜材料对比+避坑指南</p>
+      <p><strong>【效果型】</strong>「xx」打一次的效果，到底值不值得？</p>
+
+      <div class="section-label">🖼️ 首图视觉建议</div>
+      <p><strong>【画面主体】</strong>产品包装实拍 + 大字品牌名 + 核心卖点关键词</p>
+      <p><strong>【首图花字】</strong>「打前必看」「一支实现塑形+提升同步进行」</p>
+      <p><strong>【色调/氛围】</strong>专业医疗感，干净白底，突出产品本身</p>
+
+      <div class="section-label">🏷️ 话题标签</div>
+      <div class="tag-list">
+        <span class="tag">#注射填充</span>
+        <span class="tag">#塑妍萃</span>
+        <span class="tag">#童颜针</span>
+        <span class="tag">#濡白天使</span>
+        <span class="tag">#面部填充</span>
+        <span class="tag">#注射材料</span>
+        <span class="tag">#医美避坑</span>
+        <span class="tag">#华南医美</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🔦 场景三：光电抗衰类</h2>
+    <div class="ad-card">
+      <div class="section-label">🧠 用户心理</div>
+      <p>效果导向型。搜索「热玛吉多少发」「热玛吉疼不疼」「热玛吉和超声炮哪个更好」，关注效果、疼痛度、性价比，处于比较决策阶段。</p>
+
+      <div class="section-label">💬 卖点植入逻辑</div>
+      <p>以「效果可视化+数据化」为核心：用数字说话（发数、温度、维持时间），用对比图证明效果。KOC口吻：「热玛吉+大超炮=抗衰王炸，但并不是所有人都适合」</p>
+
+      <div class="section-label">📝 标题方向</div>
+      <p><strong>【答疑型】</strong>热玛吉900发❗️原来不是垮是松｜不同年龄段发数怎么分配</p>
+      <p><strong>【组合型】</strong>热玛吉+大超炮=抗衰"王炸"这3类人别碰❗</p>
+
+      <div class="section-label">🖼️ 首图视觉建议</div>
+      <p><strong>【画面主体】</strong>仪器实物特写 + 大字核心数据（如"900发""全面部"）</p>
+      <p><strong>【首图花字】</strong>「不同年龄段热玛吉到底打多少发」「抗衰新方式精准提升不馒化」</p>
+      <p><strong>【色调/氛围】</strong>科技感 + 专业感，蓝白色调为主</p>
+
+      <div class="section-label">️ 话题标签</div>
+      <div class="tag-list">
+        <span class="tag">#热玛吉</span>
+        <span class="tag">#大超炮</span>
+        <span class="tag">#光电抗衰</span>
+        <span class="tag">#面部提升</span>
+        <span class="tag">#抗衰</span>
+        <span class="tag">#30+抗衰</span>
+        <span class="tag">#40+抗衰</span>
+        <span class="tag">#华南医美</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🔍 场景四：祛斑/皮肤类</h2>
+    <div class="ad-card">
+      <div class="section-label">🧠 用户心理</div>
+      <p>痛点驱动型。搜索「祛斑有效吗」「红血丝怎么改善」「黄金微针毛孔」，有明确皮肤问题，寻求解决方案，决策周期较短。</p>
+
+      <div class="section-label">💬 卖点植入逻辑</div>
+      <p>以「问题+解决方案」直接切入：先共情痛点（斑/痘印/红血丝带来的困扰），再给出专业方案。KOC口吻：「祛斑核心三问：搞懂层次，新手少走90%弯路」</p>
+
+      <div class="section-label">📝 标题方向</div>
+      <p><strong>【干货型】</strong>祛斑核心三问🤔搞懂层次新手少走90%弯路</p>
+      <p><strong>【效果型】</strong>红血丝的橡皮擦🏻｜敏肌修护找准思路</p>
+
+      <div class="section-label">🖼️ 首图视觉建议</div>
+      <p><strong>【画面主体】</strong>皮肤局部特写（痘印/斑/红血丝）+ 红圈痛点标注</p>
+      <p><strong>【首图花字】</strong>「搞懂层次少走90%弯路」「敏肌进｜别再盲目修护了」</p>
+
+      <div class="section-label">🏷️ 话题标签</div>
+      <div class="tag-list">
+        <span class="tag">#祛斑</span>
+        <span class="tag">#红血丝</span>
+        <span class="tag">#黄金微针</span>
+        <span class="tag">#毛孔粗大</span>
+        <span class="tag">#敏肌修护</span>
+        <span class="tag">#痘印</span>
+        <span class="tag">#华南医美</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<div class="footer">
+  <p>🌸 医美好内容手册 · 2026双周复盘 · 来自玫玫的狗蛋 </p>
+  <p style="margin-top:4px">数据周期：2026/05/04 ~ 05/17 ｜ 内容仅供内部参考</p>
+</div>
+
+<script>
+function switchTab(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+
+function filterTable(type, btn) {
+  document.querySelectorAll('#filterBar .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#topTable tbody tr').forEach(row => {
+    if (type === 'all' || row.dataset.type === type) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
